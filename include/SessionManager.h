@@ -21,6 +21,8 @@ public:
     SessionManager();
     
     // Questionnaire management
+    // Creates a new questionnaire with title, description, and optional time limit
+    // timeLimit: time limit in minutes, 0 for unlimited
     int createQuestionnaire(const std::string& title, const std::string& description, int timeLimit = 0);
     bool addQuestionToQuestionnaire(int questionnaireId, std::shared_ptr<Question> question);
     std::shared_ptr<Questionnaire> getQuestionnaire(int questionnaireId);

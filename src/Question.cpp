@@ -13,13 +13,13 @@ void Question::setCorrectAnswer(const std::string& answer) {
 }
 
 bool Question::checkAnswer(const std::string& answer) const {
-    // Case-insensitive comparison for short answers
+    // Case-insensitive comparison for short answers using std::equal
     if (type == QuestionType::SHORT_ANSWER || type == QuestionType::ESSAY) {
-        std::string lowerAnswer = answer;
-        std::string lowerCorrect = correctAnswer;
-        std::transform(lowerAnswer.begin(), lowerAnswer.end(), lowerAnswer.begin(), ::tolower);
-        std::transform(lowerCorrect.begin(), lowerCorrect.end(), lowerCorrect.begin(), ::tolower);
-        return lowerAnswer == lowerCorrect;
+        if (answer.length() != correctAnswer.length()) {
+            return false;
+        }
+        return std::equal(answer.begin(), answer.end(), correctAnswer.begin(),
+            [](char a, char b) { return std::tolower(a) == std::tolower(b); });
     }
     return answer == correctAnswer;
 }

@@ -61,10 +61,10 @@ bool SessionManager::completeSession(int sessionId) {
     auto session = it->second;
     session->completeSession();
     
-    // Calculate score
-    auto questionnaire = questionnaires[session->getQuestionnaireId()];
-    if (questionnaire) {
-        session->calculateScore(*questionnaire);
+    // Calculate score - check questionnaire exists
+    auto questIt = questionnaires.find(session->getQuestionnaireId());
+    if (questIt != questionnaires.end()) {
+        session->calculateScore(*questIt->second);
     }
     
     // Move to completed sessions
