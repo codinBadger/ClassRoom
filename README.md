@@ -87,12 +87,23 @@ A complete self-directed learning application where students can create and mana
 cd backend
 ```
 
-2. Build and run the backend:
+2. Create a `.env` file from the example:
+```bash
+cp .env.example .env
+```
+
+3. Update the `.env` file with secure values:
+   - Generate a strong JWT_SECRET: `openssl rand -base64 32`
+   - Set appropriate database path if needed
+
+4. Build and run the backend:
 ```bash
 cargo run --release
 ```
 
 The backend will start on `http://localhost:8080`
+
+**Security Note**: The code execution feature is for demonstration purposes only. In production, implement proper sandboxing using Docker, VMs, or specialized sandboxing solutions.
 
 ### Frontend Setup
 
@@ -181,11 +192,31 @@ The application uses SQLite with the following main tables:
 ## Security Features
 
 - Password hashing with bcrypt
-- JWT-based authentication
+- JWT-based authentication with environment-based secrets
 - Protected API endpoints
 - Input validation
 - SQL injection prevention (using parameterized queries)
 - CORS configuration
+
+## Security Considerations
+
+**IMPORTANT**: This application is provided as a demonstration and educational tool. Before deploying to production:
+
+1. **Code Execution Sandboxing**: The code execution feature currently runs user code directly on the server. Implement proper sandboxing:
+   - Use Docker containers with resource limits and network isolation
+   - Consider specialized sandboxing solutions (gVisor, Firecracker, WebAssembly)
+   - Implement time limits and memory constraints
+   - Run code in isolated environments without network access
+
+2. **JWT Secret**: Always use a strong, randomly generated JWT_SECRET in production (see `.env.example`)
+
+3. **Database**: Consider using PostgreSQL or MySQL for production deployments
+
+4. **File Uploads**: Implement proper file validation, size limits, and virus scanning for ebook uploads
+
+5. **Rate Limiting**: Add rate limiting to prevent abuse of API endpoints
+
+6. **HTTPS**: Always use HTTPS in production environments
 
 ## Future Enhancements
 

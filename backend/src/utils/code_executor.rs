@@ -2,6 +2,16 @@ use std::process::{Command, Stdio};
 use std::time::Instant;
 use crate::models::ExecutionResult;
 
+// SECURITY WARNING: This code executor runs user-submitted code directly on the server.
+// In a production environment, you MUST implement proper sandboxing such as:
+// - Docker containers with resource limits
+// - Virtual machines
+// - Specialized sandboxing solutions (e.g., gVisor, Firecracker)
+// - Network isolation
+// - File system restrictions
+// - Time limits and resource quotas
+// Current implementation is for demonstration purposes only.
+
 pub async fn execute_code(language: &str, code: &str) -> ExecutionResult {
     let start = Instant::now();
     
