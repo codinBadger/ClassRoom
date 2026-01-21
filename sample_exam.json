@@ -1,0 +1,42 @@
+{
+  "title": "C++ Programming Quiz",
+  "description": "A comprehensive quiz on C++ fundamentals",
+  "timeLimit": 30,
+  "numQuestions": 5,
+  "questions": [
+    {
+      "questionText": "What is the size of an int in most modern C++ compilers?",
+      "questionType": "MULTIPLE_CHOICE",
+      "options": ["2 bytes", "4 bytes", "8 bytes", "16 bytes"],
+      "correctAnswer": "4 bytes",
+      "points": 1
+    },
+    {
+      "questionText": "Is C++ an object-oriented programming language?",
+      "questionType": "TRUE_FALSE",
+      "options": ["True", "False"],
+      "correctAnswer": "True",
+      "points": 1
+    },
+    {
+      "questionText": "What does STL stand for?",
+      "questionType": "SHORT_ANSWER",
+      "correctAnswer": "Standard Template Library",
+      "points": 2
+    },
+    {
+      "questionText": "Which operator is used for dynamic memory allocation in C++?",
+      "questionType": "MULTIPLE_CHOICE",
+      "options": ["malloc", "new", "alloc", "create"],
+      "correctAnswer": "new",
+      "points": 1
+    },
+    {
+      "questionText": "Does C++ support multiple inheritance?",
+      "questionType": "TRUE_FALSE",
+      "options": ["True", "False"],
+      "correctAnswer": "True",
+      "points": 1
+    }
+  ]
+}

@@ -13,6 +13,8 @@ A high-performance C++ backend for managing questionnaires with support for 100+
 - Thread-safe session management
 - Multiple question types (Multiple Choice, True/False, Short Answer, Essay)
 - Real-time scoring and validation
+- **Load exams from JSON files** 📄 ✅
+- **Automatic results display after completion** ✅
 - Handles 100+ concurrent students (tested with 100 threads in ~300ms)
 - Zero external dependencies (C++17 standard library only)
 
@@ -29,7 +31,12 @@ make
 
 # Run demo with 100 students
 ./questionnaire_backend
+
+# Load and run an exam from JSON
+./json_exam_demo sample_exam.json
 ```
+
+For JSON exam format details, see [JSON_FORMAT.md](JSON_FORMAT.md)
 
 For detailed documentation, see [QUESTIONNAIRE_README.md](QUESTIONNAIRE_README.md)
 

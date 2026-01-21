@@ -13,6 +13,7 @@ set(LIB_SOURCES
     src/Questionnaire.cpp
     src/StudentSession.cpp
     src/SessionManager.cpp
+    src/QuestionnaireLoader.cpp
 )
 
 # Create library
@@ -21,6 +22,10 @@ add_library(questionnaire_lib ${LIB_SOURCES})
 # Main executable
 add_executable(questionnaire_backend src/main.cpp)
 target_link_libraries(questionnaire_backend questionnaire_lib pthread)
+
+# JSON exam loader demo
+add_executable(json_exam_demo src/json_exam_demo.cpp)
+target_link_libraries(json_exam_demo questionnaire_lib pthread)
 
 # Enable testing
 enable_testing()
