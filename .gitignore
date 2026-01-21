@@ -1,0 +1,15 @@
+build/
+*.o
+*.a
+*.so
+*.exe
+.vscode/
+.idea/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.swp
+*.swo
+*~
