@@ -5,7 +5,6 @@ mod utils;
 
 use actix_web::{web, App, HttpServer, middleware::Logger};
 use actix_cors::Cors;
-use sqlx::SqlitePool;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {

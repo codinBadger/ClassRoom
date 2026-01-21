@@ -1,5 +1,4 @@
 use std::process::{Command, Stdio};
-use std::io::Write;
 use std::time::Instant;
 use crate::models::ExecutionResult;
 
@@ -39,7 +38,7 @@ pub async fn execute_code(language: &str, code: &str) -> ExecutionResult {
 }
 
 fn execute_python(code: &str) -> Result<String, String> {
-    let mut child = Command::new("python3")
+    let child = Command::new("python3")
         .arg("-c")
         .arg(code)
         .stdout(Stdio::piped())
@@ -59,7 +58,7 @@ fn execute_python(code: &str) -> Result<String, String> {
 }
 
 fn execute_javascript(code: &str) -> Result<String, String> {
-    let mut child = Command::new("node")
+    let child = Command::new("node")
         .arg("-e")
         .arg(code)
         .stdout(Stdio::piped())

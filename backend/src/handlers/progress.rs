@@ -2,7 +2,7 @@ use actix_web::{web, HttpResponse, Responder};
 use sqlx::SqlitePool;
 use uuid::Uuid;
 use chrono::Utc;
-use crate::models::{Progress, CreateProgress, ProgressStats, DisciplineMetrics, TimelineEntry};
+use crate::models::{CreateProgress, ProgressStats, DisciplineMetrics, TimelineEntry};
 
 pub async fn track_progress(
     pool: web::Data<SqlitePool>,
