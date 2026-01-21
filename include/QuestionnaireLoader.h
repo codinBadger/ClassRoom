@@ -11,7 +11,7 @@ public:
     static int loadFromJsonFile(SessionManager& manager, const std::string& filename);
     
     // Helper to display results for a completed session
-    static void displayResults(const SessionManager& manager, int sessionId);
+    static void displayResults(SessionManager& manager, int sessionId);
 };
 
 #endif

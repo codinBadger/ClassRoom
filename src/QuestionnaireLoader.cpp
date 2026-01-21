@@ -90,9 +90,18 @@ int QuestionnaireLoader::loadFromJsonFile(SessionManager& manager, const std::st
             } else if (key == "description") {
                 description = removeQuotes(value);
             } else if (key == "timeLimit") {
-                timeLimit = std::stoi(value);
+                try {
+                    timeLimit = std::stoi(value);
+                } catch (const std::exception& e) {
+                    std::cerr << "Warning: Invalid timeLimit value, using 0" << std::endl;
+                    timeLimit = 0;
+                }
             } else if (key == "numQuestions" || key == "numberOfQuestions") {
-                numQuestions = std::stoi(value);
+                try {
+                    numQuestions = std::stoi(value);
+                } catch (const std::exception& e) {
+                    std::cerr << "Warning: Invalid numQuestions value" << std::endl;
+                }
             } else if (key == "questions") {
                 inQuestions = true;
                 // Create questionnaire now that we have the metadata
@@ -106,7 +115,12 @@ int QuestionnaireLoader::loadFromJsonFile(SessionManager& manager, const std::st
             } else if (key == "correctAnswer" || key == "answer") {
                 currentCorrectAnswer = removeQuotes(value);
             } else if (key == "points") {
-                currentPoints = std::stoi(value);
+                try {
+                    currentPoints = std::stoi(value);
+                } catch (const std::exception& e) {
+                    std::cerr << "Warning: Invalid points value, using 1" << std::endl;
+                    currentPoints = 1;
+                }
             } else if (key == "options") {
                 // Start collecting options
                 currentOptions.clear();
@@ -171,14 +185,14 @@ int QuestionnaireLoader::loadFromJsonFile(SessionManager& manager, const std::st
     return questionnaireId;
 }
 
-void QuestionnaireLoader::displayResults(const SessionManager& manager, int sessionId) {
-    auto session = const_cast<SessionManager&>(manager).getSession(sessionId);
+void QuestionnaireLoader::displayResults(SessionManager& manager, int sessionId) {
+    auto session = manager.getSession(sessionId);
     if (!session) {
         std::cout << "Session not found!" << std::endl;
         return;
     }
     
-    auto questionnaire = const_cast<SessionManager&>(manager).getQuestionnaire(session->getQuestionnaireId());
+    auto questionnaire = manager.getQuestionnaire(session->getQuestionnaireId());
     if (!questionnaire) {
         std::cout << "Questionnaire not found!" << std::endl;
         return;
