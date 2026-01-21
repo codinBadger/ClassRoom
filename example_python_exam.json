@@ -1,0 +1,28 @@
+{
+  "title": "Python Programming Quiz",
+  "description": "Test your Python knowledge",
+  "timeLimit": 20,
+  "numQuestions": 3,
+  "questions": [
+    {
+      "questionText": "What is the output of print(type([]))?",
+      "questionType": "MULTIPLE_CHOICE",
+      "options": ["<class 'list'>", "<class 'dict'>", "<class 'tuple'>", "<class 'set'>"],
+      "correctAnswer": "<class 'list'>",
+      "points": 1
+    },
+    {
+      "questionText": "Python is an interpreted language?",
+      "questionType": "TRUE_FALSE",
+      "options": ["True", "False"],
+      "correctAnswer": "True",
+      "points": 1
+    },
+    {
+      "questionText": "What keyword is used to define a function in Python?",
+      "questionType": "SHORT_ANSWER",
+      "correctAnswer": "def",
+      "points": 1
+    }
+  ]
+}
